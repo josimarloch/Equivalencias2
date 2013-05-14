@@ -31,5 +31,18 @@ public class RequisicaoEquivalenciaDao extends DaoGenerics<RequisicaoEquivalenci
         }
         return lista;
     }
+    public List<RequisicaoEquivalencia> listaPorEmailProfessor(String email){
+       // listar("AlunoRa = " +login);
+         List<RequisicaoEquivalencia> lista = null;
+        if (email != null) {
+            session = getsession();
+            Query query = session.createQuery(
+                    "select r from RequisicaoEquivalencia r where r.diciplinaRequerida.professor.email = '" +email +"'");
+                 //   "From disciplina where curso.id = " +id );
+            lista = query.list();
+            session.flush();
+        }
+        return lista;
+    }
     
 }

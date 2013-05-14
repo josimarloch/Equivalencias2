@@ -53,6 +53,15 @@
                 </div>
             </div>
             <div class="control-group">
+                    <label class="control-label" for="professor"></label>
+                    <div class="controls">
+                       <label class="checkbox">
+                           <input type="checkbox" name="professor" id="professor"> Sou um Professor.
+                </label>
+                </div>
+            </div>
+            
+            <div class="control-group">
                 <div class="controls">
                     <input type="hidden" value="login" name="ok"/>
                     <button type="submit" class="btn">Sign in</button>

@@ -63,7 +63,10 @@
                     <a class="brand" href="#">Equivalência de Disciplinas</a>
                     <div class="nav-collapse collapse">
                         <p class="navbar-text pull-right">
-                            Logged in as <a href="#" class="navbar-link">   <c:if test="${aluno!=null}"><c:out value="${aluno.nome}"/><a href="LoginManager?ok=logout" title="Sair" > Logout</a> </c:if>
+                            Logged in as <a href="#" class="navbar-link"></a>  
+                            <c:if test="${aluno!=null}"><c:out value="${aluno.nome}"/>
+                                <a href="LoginManager?ok=logout" title="Sair" > Logout</a> 
+                            </c:if>
                         </p>
                         <ul class="nav">
                             <li class="active"><a href="#">Home</a></li>
@@ -81,14 +84,17 @@
             <div class="row-fluid">
                 <div class="span3">
                     <div class="well sidebar-nav">
-                        <c:if test="${aluno!=null}">
-                            <ul class="nav nav-list">
+                        <ul class="nav nav-list">
+                            <c:if test="${aluno!=null}">
                                 <li class="nav-header">Menu</li>
                                 <li ><a href="#" onclick="abrirPag('lista_cursos.jsp')">Pedir Equivalencia</a></li>
                                 <li ><a href="#" onclick="abrirPag('lista_pedidos.jsp')">Meus Pedidos</a></li>
                                 <li><a href="#">Link</a></li>
                                 <li><a href="#">Link</a></li>
                                 <li><a href="#">Link</a></li>
+                            </c:if>
+                            <c:if test="${professor!=null}">
+
                                 <li class="nav-header">Sidebar</li>
                                 <li><a href="#">Link</a></li>
                                 <li><a href="#">Link</a></li>
@@ -96,12 +102,8 @@
                                 <li><a href="#">Link</a></li>
                                 <li><a href="#">Link</a></li>
                                 <li><a href="#">Link</a></li>
-                                <li class="nav-header">Sidebar</li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                            </ul>
-                        </c:if>
+                            </c:if>
+                        </ul>
 
 
 

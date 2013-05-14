@@ -6,6 +6,7 @@ package servlets;
 
 import Daos.AlunoDao;
 import beans.Aluno;
+import beans.ProfessorLogin;
 import br.edu.utfpr.cm.saa.entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -92,26 +93,38 @@ public class LoginManager extends HttpServlet {
         // processRequest(request, response);
         String ok = request.getParameter("ok");
         if (ok.equals("login")) {
+
             String login = request.getParameter("login").trim();
             String senha = request.getParameter("senha").trim();
-                    HttpSession session = request.getSession();
+            HttpSession session = request.getSession();
             if (ldap.logarNoLDAP(login, senha) != null) {
-                    Usuario usuario = ldap.logarNoLDAP(login, senha);
+                Usuario usuario = ldap.logarNoLDAP(login, senha);
+                if ("on".equals(request.getParameter("professor"))) {
+                    ProfessorLogin p = (ProfessorLogin) usuario;
+                    session.setAttribute("professor", p);
+                } else {
                     usuario.setLogin(login);
                     session.setAttribute("aluno", usuario);
-                    //(!ad.alunoExiste(login)) {
-                   // ad.persistir(usuario);
-                    //  }               
-            }else{
+                }
+                //(!ad.alunoExiste(login)) {
+                // ad.persistir(usuario);
+                //  }               
+            } else {
+                if ("on".equals(request.getParameter("professor"))) {
+                    Usuario usuario = new UserLDAP();
+                    usuario.setLogin(login);
+                    usuario.setNome(login);
+                    session.setAttribute("professor", usuario);
+                } else {
                     Usuario usuario = new UserLDAP();
                     usuario.setLogin(login);
                     usuario.setNome(login);
                     session.setAttribute("aluno", usuario);
                     session.setAttribute("usuario", usuario);
-                
+                }
             }
         }
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("index.jsp?onload=mostra_msg.jsp?mensagem_ok=Seja Bem Vindo(a) ao sistema de pedido de equivalencia de disciplinas da UTFPR");
     }
 
     /**

@@ -38,7 +38,7 @@ public class Testa {
 //        while(d.hasNext()){
 //            System.out.println(d.next().getNome());
 //        }
-        System.out.println(new RequisicaoEquivalenciaDao().listaPorLogin("a1028340"));
+        System.out.println(new RequisicaoEquivalenciaDao().listaPorEmailProfessor("josimarlochcm@gmail.com"));
     }
     
 }
