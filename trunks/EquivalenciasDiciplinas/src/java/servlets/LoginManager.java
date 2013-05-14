@@ -82,6 +82,7 @@ public class LoginManager extends HttpServlet {
         }
         if("admin".equals(tipo)){
         response.sendRedirect("admin/index.jsp");
+        return;
             
         }
         response.sendRedirect("index.jsp");
@@ -106,9 +107,7 @@ public class LoginManager extends HttpServlet {
             String login = request.getParameter("login").trim();
             String senha = request.getParameter("senha").trim();
             HttpSession session = request.getSession();
-            if (false/*
-                     * ldap.logarNoLDAP(login, senha) != null
-                     */) {
+            if (ldap.logarNoLDAP(login, senha) != null) {
                 Usuario usuario = ldap.logarNoLDAP(login, senha);
 
                 usuario.setLogin(login);
@@ -120,7 +119,7 @@ public class LoginManager extends HttpServlet {
                 usuario.setLogin(login);
                 usuario.setNome(login);
                 usuario.setEmail(login);
-                session.setAttribute("usuario", usuario);
+               // session.setAttribute("usuario", usuario);
 
 
             }
