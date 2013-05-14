@@ -87,6 +87,8 @@ public class EquivalenciaManager extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try{
+            
        String action = request.getParameter("ok");
         if ("persistir".equals(action)) {
             Disciplina d = new DisciplinaDao().obterPorId(Integer.parseInt(request.getParameter("disciplina_id")));
@@ -101,10 +103,18 @@ public class EquivalenciaManager extends HttpServlet {
                 requisicao.setDiciplinaRequerida(d);
                 new RequisicaoEquivalenciaDao().persistir(requisicao);
                 new ItemHistoricoDao().persistir(new ItemHistorico(requisicao));
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("index.jsp?onload=mostra_msg.jsp?mensagem_ok=Seu pedido de equivalencia foi criado com sucesso!");
             }else{
                 response.sendRedirect("index.jsp?onload=login.jsp?mensagem_erro=Nao foi possivel obter dados de login, por favor faca o login novamente");
             }
+        }
+        }catch(Exception e){
+                response.sendRedirect("index.jsp?onload=login.jsp?mensagem_erro=Nao foi possivel Processar seu pedido pelo seguinte erro: "+e.toString()+", por favor tente Novamente!");
+            return;
+        }finally{
+        PrintWriter p = response.getWriter();
+        p.print("Ocorreu um erro grave...");
+            
         }
     }
 

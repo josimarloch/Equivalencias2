@@ -10,15 +10,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%session.setAttribute("disciplinas", new DisciplinaDao().getPorIDCurso(request.getParameter("curso_id")));%>
-<<<<<<< HEAD
+
 
 <%session.setAttribute("curso", new CursoDao().obterPorId(Integer.parseInt(request.getParameter("curso_id"))));%>
 
-=======
-<%session.setAttribute("curso", new CursoDao().obterPorId(Integer.parseInt(request.getParameter("curso_id"))));
-
-%>
->>>>>>> 19ddbf7... Trabalho do fim de semana.
 <!DOCTYPE html>
 <html>
     <head>
