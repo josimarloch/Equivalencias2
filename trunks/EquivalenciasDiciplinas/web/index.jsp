@@ -75,10 +75,9 @@
                         </p>
                         <ul class="nav">
                             <li class="active"><a href="index.jsp">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <a href="admin/index.jsp"> <button class="btn">area admin</button>
-                            </a> 
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -94,17 +93,13 @@
                                 <li class="nav-header">Menu</li>
                                 <li ><a href="#" onclick="abrirPag('lista_cursos.jsp')">Pedir Equivalencia</a></li>
                                 <li ><a href="#" onclick="abrirPag('lista_pedidos.jsp')">Meus Pedidos</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                            </c:if>
+                               
 
 
                             <li class="nav-header">Menu Do Professor</li>
-                             <li ><a href="#" onclick="abrirPag('lista_pedidos_professor.jsp')">Meus Enviados a mim</a></li>
-                               <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
+                             <li ><a href="#" onclick="abrirPag('lista_pedidos_professor.jsp')">Pedidos Enviados a mim</a></li>
+                              
+                            </c:if>
 
                         </ul>
 

@@ -85,12 +85,11 @@
                         <a class="brand" href="#">Equivalência de Disciplinas/Admin</a>
                         <div class="nav-collapse collapse">
                             <p class="navbar-text pull-right">
-                                Logged in as <a href="#" class="navbar-link">Username</a>
+                                Logged in as <c:if test="${administrador != null}"><c:out value="${administrador.login}"/> <a href="../LoginManager?ok=logout&tipo=admin" class="link">- Logout </a></c:if>
                             </p>
                             <ul class="nav">
-                                <li class="active"><a href="#">Home</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li class="active"><a href="index.jsp">Home</a></li>
+                               
                             </ul>
                         </div><!--/.nav-collapse -->
                     </div>
@@ -102,6 +101,7 @@
                     <div class="span3">
                         <div class="well sidebar-nav">
                             <ul class="nav nav-list">
+                                <c:if test="${administrador != null}">
                                 <li class="nav-collapse">Menu</li>
                                 <li class="nav-header">Cadastros</li>
                                 <li ><a href="#" onclick="abrirPag('cadastra_professor.jsp')">Cadastro de Professor</a></li>
@@ -110,15 +110,7 @@
                                 <li id="test"><a href="#" onclick="ChangeClass(document.getElementById('test'),'active');" onblur="">Link</a></li>
                                 <li class="nav-header">Consultas</li>
                                 <li ><a href="#" onclick="abrirPag('lista_professor.jsp')">Todos os Professores</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li class="nav-header">Sidebar</li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
+                                </c:if>
                             </ul>
                         </div><!--/.well -->
                     </div><!--/span-->
@@ -165,6 +157,8 @@
         <c:if test="${param.onload!=null}">
             <script>abrirPag('${param.onload}')</script>
         </c:if>
-
+             <c:if test="${administrador == null}">
+                <script>abrirPag('login.jsp')</script>
+            </c:if>
 
     </body></html>

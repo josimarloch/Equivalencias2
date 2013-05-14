@@ -31,7 +31,7 @@
         <link href="css/bootstrap.css" rel="stylesheet">
     </head>
     <body>
-        <form class="form-horizontal" action="LoginManager" method="post">
+        <form class="form-horizontal" action="../LoginManager" method="post">
             <h3>Login</h3>
             <div class="control-group">
                 <label class="control-label" for="inputEmail">Login</label>
@@ -43,6 +43,7 @@
                     <label class="control-label" for="inputPassword">Password</label>
                     <div class="controls">
                         <input type="password" id="inputPassword" placeholder="Password" name="senha">
+                        <input type="hidden" name="ok" value="login_admin"/>
                 </div>
             </div>
             <div class="control-group">

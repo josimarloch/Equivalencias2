@@ -27,8 +27,10 @@
         <dl>
             <dt>Status atual do pedido:</dt>
             <dd><c:out value="${pedido.status}" /></dd>
-            <c:if test="${pedido.status != 'EM_ANDAMENTO'}"></c:if>
+            <c:if test="${pedido.status eq 'ACEITO'}">
+                
             <dd>Finalizado em: <c:out value="${df.format(pedido.dataFinal.time)}" /></dd>
+            </c:if>
         </dl>
         <dl>
             <dt>RA do requisitante:</dt>
@@ -51,8 +53,8 @@
         <br/>
         <c:if test="${pedido.status eq 'EM_ANDAMENTO'}">
         <a href="EquivalenciaManager?ok=deferir&pedido_id=${pedido.id}"><button class="btn btn-primary" >Deferir Pedido</button></a>
-        <button class="btn btn-warning">Indeferir Pedido</button>
-        <a href="index.jsp"> <button class="btn btn-danger">Cancelar e voltar para inicio</button></a>
+        <button class="btn btn-warning" onclick="abrirPag('indefere.jsp?pedido_id=${pedido.id}')">Indeferir Pedido</button>
+        <a href="index.jsp"> <button class="btn btn-danger" >Cancelar e voltar para inicio</button></a>
         </c:if>
         <c:if test="${pedido.status != 'EM_ANDAMENTO'}">
             <h3 class="alert-success">Pedido de equivalencia já finalizado.</h3>
