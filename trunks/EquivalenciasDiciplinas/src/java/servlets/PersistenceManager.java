@@ -95,7 +95,10 @@ public class PersistenceManager extends HttpServlet {
                          
                 if (!nome.equals("") && !email.equals("")) {
                     new ProfessorDao().persistir(new Professor(nome, email));
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect("index.jsp?onload=cadastra_professor.jsp?mensagem_ok=Professor cadastrado com sucesso!");
+                }else{
+                    response.sendRedirect("index.jsp?onload=cadastra_professor.jsp?mensagem_erro=Nome ou email Invalido! por favor verifique os campos&professor_nome="+nome+"&professor_email="+email+"");
+                    
                 }
             } else if (ok.equals("cadastra_curso")) {
                 String nome = request.getParameter("nome").trim();

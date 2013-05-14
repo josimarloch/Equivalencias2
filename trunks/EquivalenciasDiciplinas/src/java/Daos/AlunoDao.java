@@ -12,7 +12,6 @@ import org.hibernate.Query;
  * @author josimar
  */
 public class AlunoDao extends DaoGenerics<Aluno> {
-
     public AlunoDao() {
         clazz = Aluno.class;
     }

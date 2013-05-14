@@ -74,6 +74,8 @@ public class LoginManager extends HttpServlet {
         String ok = request.getParameter("ok");
         if (ok.equals("logout")) {
             request.getSession().removeAttribute("aluno");
+            request.getSession().removeAttribute("professor");
+            request.getSession().removeAttribute("usuario");
         }
         response.sendRedirect("index.jsp");
     }
@@ -97,31 +99,21 @@ public class LoginManager extends HttpServlet {
             String login = request.getParameter("login").trim();
             String senha = request.getParameter("senha").trim();
             HttpSession session = request.getSession();
-            if (ldap.logarNoLDAP(login, senha) != null) {
+            if (false/*ldap.logarNoLDAP(login, senha) != null*/) {
                 Usuario usuario = ldap.logarNoLDAP(login, senha);
-                if ("on".equals(request.getParameter("professor"))) {
-                    ProfessorLogin p = (ProfessorLogin) usuario;
-                    session.setAttribute("professor", p);
-                } else {
+               
                     usuario.setLogin(login);
-                    session.setAttribute("aluno", usuario);
-                }
-                //(!ad.alunoExiste(login)) {
-                // ad.persistir(usuario);
-                //  }               
-            } else {
-                if ("on".equals(request.getParameter("professor"))) {
-                    Usuario usuario = new UserLDAP();
-                    usuario.setLogin(login);
-                    usuario.setNome(login);
-                    session.setAttribute("professor", usuario);
-                } else {
-                    Usuario usuario = new UserLDAP();
-                    usuario.setLogin(login);
-                    usuario.setNome(login);
-                    session.setAttribute("aluno", usuario);
                     session.setAttribute("usuario", usuario);
-                }
+                           
+            } else {
+             
+                    Usuario usuario = new UserLDAP();
+                    usuario.setLogin(login);
+                    usuario.setNome(login);
+                    usuario.setEmail(login);
+                    session.setAttribute("usuario", usuario);
+                    
+                
             }
         }
         response.sendRedirect("index.jsp?onload=mostra_msg.jsp?mensagem_ok=Seja Bem Vindo(a) ao sistema de pedido de equivalencia de disciplinas da UTFPR");

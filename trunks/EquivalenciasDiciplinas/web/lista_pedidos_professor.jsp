@@ -22,7 +22,7 @@
                 <th>Status Atual</th>
                 <th>#</th>
             </tr>
-            <c:forEach items="${dao.listaPorLogin(usuario.nome)}" var="p" varStatus="status">
+            <c:forEach items="${dao.listaPorEmailProfessor(usuario.email)}" var="p" varStatus="status">
                 <tr>
                     <td>
                         <c:out value="${p.diciplinaRequerida.nome}" />               
@@ -33,8 +33,7 @@
                     </td>
                    
                     <td>
-                      
-                             
+                         <button class="btn btn-primary" onclick="abrirPag('visualiza_pedido.jsp?pedido_id=${p.id}')">Visualizar Pedido</button>
                     </td>
                 </tr>
             </c:forEach>

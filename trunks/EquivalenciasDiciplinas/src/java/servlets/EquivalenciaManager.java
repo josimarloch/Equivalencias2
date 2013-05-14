@@ -12,8 +12,10 @@ import br.edu.utfpr.cm.saa.entidades.Usuario;
 import controler.EmailControler;
 import Daos.ItemHistoricoDao;
 import Daos.RequisicaoEquivalenciaDao;
+import beans.StatusSolicitacao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -70,8 +72,33 @@ public class EquivalenciaManager extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String action = request.getParameter("ok");
+            if("deferir".equals(action)){
+                RequisicaoEquivalencia re = new RequisicaoEquivalenciaDao().obterPorId(Integer.parseInt(request.getParameter("pedido_id")));
+                re.setStatus(StatusSolicitacao.ACEITO);
+                re.setDataFinal(Calendar.getInstance());
+                new RequisicaoEquivalenciaDao().persistir(re);
+                new ItemHistoricoDao().persistir(new ItemHistorico(re));
+                response.sendRedirect("index.jsp?onload=mostra_msg.jsp?mensagem_ok=O Status deste pedido de equivalencia foi alterado e salvo com sucesso!");
+            }else if("indeferir".equals(action)){
+                 PrintWriter p = response.getWriter();
+        p.print("  <form class=\"form-horizontal\" action=\"PersistenceManager\" method=\"post\" accept-charset=\"ISO-8859-1\" >"
+        +"<div class=\"control-group\">"
+        + "  <label class=\"control-label\" for=\"ementa\" >Motivo Do indeferimento</label>"
+        + " <div class=\"controls\">"
+        + " <textarea rows=\"4\" name=\"ementa\" id=\"ementa\"></textarea>"
+        + "                </div>"
+        + "            </div>"
+        + "            <div class=\"control-group\">"
+        + "                <div class=\"controls\">"
+        + "                    <input type=\"hidden\" name=\"ok\" value=\"cadastra_disciplina\"/>  "
+        + " <button type=\"submit\" class=\"btn\">Cadastrar</button>"
+        + " </div>"
+        + ""
+        + "            </div>        </form>");
+            }
         //processRequest(request, response);
-        response.sendRedirect("index.jsp?onload=login.jsp?mensagem_erro=Nao foi possivel obter dados de login, por favor faca o ligin novamente");
+       // response.sendRedirect("index.jsp?onload=login.jsp?mensagem_erro=Nao foi possivel obter dados de login, por favor faca o ligin novamente");
        return;
     }
 
@@ -95,11 +122,11 @@ public class EquivalenciaManager extends HttpServlet {
             EmailControler em = new EmailControler();
             RequisicaoEquivalencia requisicao = new RequisicaoEquivalencia();
             HttpSession session = request.getSession(true);
-            Usuario usuario = (Usuario) session.getAttribute("aluno");
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
             if (usuario != null) {
                 String ementa = request.getParameter("ementa");
                 requisicao.setAlunoRa(usuario.getLogin());
-                requisicao.setObservacao(ementa);
+                requisicao.setEmenta(ementa);
                 requisicao.setDiciplinaRequerida(d);
                 new RequisicaoEquivalenciaDao().persistir(requisicao);
                 new ItemHistoricoDao().persistir(new ItemHistorico(requisicao));

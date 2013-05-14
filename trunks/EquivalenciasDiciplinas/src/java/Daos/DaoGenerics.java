@@ -15,17 +15,19 @@ import org.hibernate.Session;
  */
 public class DaoGenerics<T> implements Dao<T> {
 
-    Session session = null;
+    static Session session = null;
     protected Class clazz;
 
+    public DaoGenerics() {
+        
+    }
+
     protected Session getsession() {
+       // session = HibernateConfiguration.getSessionFactory().getCurrentSession();
         if (session == null) {
             session = HibernateConfiguration.getSessionFactory().openSession();
             return session;
-        } else if (!session.isOpen()) {
-            session = HibernateConfiguration.getSessionFactory().openSession();
-            return session;
-        } else {
+        }else {
             return session;
         }
     }
@@ -34,6 +36,11 @@ public class DaoGenerics<T> implements Dao<T> {
     public void persistir(T o) {
 
         getsession().saveOrUpdate(o);
+        getsession().flush();
+    }
+
+    public void atualizar(T o) {
+        getsession().update(o);
         getsession().flush();
     }
 

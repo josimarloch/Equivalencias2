@@ -41,6 +41,7 @@ public class HibernateConfiguration {
             cfg.setProperty("hibernate.format_sql", "true");
             cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
             cfg.setProperty("hibernate.connection.autocommit", "true");
+            cfg.setProperty("hibernate.current_session_context_class", "thread");
            cfg.addAnnotatedClass(Curso.class); // classes para serem mapeadas
            cfg.addAnnotatedClass(Professor.class); // classes para serem mapeadas
             cfg.addAnnotatedClass(Disciplina.class); // classes para serem mapeadas

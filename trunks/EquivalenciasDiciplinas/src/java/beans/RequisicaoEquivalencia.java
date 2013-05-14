@@ -33,6 +33,8 @@ public class RequisicaoEquivalencia implements Serializable {
     private String observacao;
     @OneToMany(mappedBy = "requisicao")
     private List<ItemHistorico>historico;
+    @Column(columnDefinition="text")
+    private String ementa;
 
     public RequisicaoEquivalencia() {
         this.status = StatusSolicitacao.EM_ANDAMENTO;
@@ -44,6 +46,22 @@ public class RequisicaoEquivalencia implements Serializable {
         this.diciplinaRequerida = diciplinaRequerida;
         this.status = status;
         this.status = StatusSolicitacao.EM_ANDAMENTO;
+    }
+
+    public String getEmenta() {
+        return ementa;
+    }
+
+    public void setEmenta(String ementa) {
+        this.ementa = ementa;
+    }
+
+    public List<ItemHistorico> getHistorico() {
+        return historico;
+    }
+
+    public void setHistorico(List<ItemHistorico> historico) {
+        this.historico = historico;
     }
      
     

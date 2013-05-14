@@ -15,6 +15,8 @@
 
         <!-- Le styles -->
         <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="js/instrucao.js" type="text/javascript">
+
         <style type="text/css">
             body {
                 padding-top: 60px;
@@ -51,7 +53,8 @@
         <link rel="shortcut icon" href="http://twitter.github.io/bootstrap/assets/ico/favicon.png">
     </head>
 
-    <body>
+    <body >
+
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -64,15 +67,17 @@
                     <div class="nav-collapse collapse">
                         <p class="navbar-text pull-right">
                             Logged in as <a href="#" class="navbar-link"></a>  
-                            <c:if test="${aluno!=null}"><c:out value="${aluno.nome}"/>
+                            <c:if test="${usuario!=null}">
+                                <c:out value="${usuario.nome}"/>
                                 <a href="LoginManager?ok=logout" title="Sair" > Logout</a> 
                             </c:if>
+
                         </p>
                         <ul class="nav">
-                            <li class="active"><a href="#">Home</a></li>
+                            <li class="active"><a href="index.jsp">Home</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">Contact</a></li>
-                            <a href="admin/index.jsp"> <button class="btn btn-danger">Cancelar e voltar para inicio</button>
+                            <a href="admin/index.jsp"> <button class="btn">area admin</button>
                             </a> 
                         </ul>
                     </div><!--/.nav-collapse -->
@@ -85,7 +90,7 @@
                 <div class="span3">
                     <div class="well sidebar-nav">
                         <ul class="nav nav-list">
-                            <c:if test="${aluno!=null}">
+                            <c:if test="${usuario!=null}">
                                 <li class="nav-header">Menu</li>
                                 <li ><a href="#" onclick="abrirPag('lista_cursos.jsp')">Pedir Equivalencia</a></li>
                                 <li ><a href="#" onclick="abrirPag('lista_pedidos.jsp')">Meus Pedidos</a></li>
@@ -93,16 +98,14 @@
                                 <li><a href="#">Link</a></li>
                                 <li><a href="#">Link</a></li>
                             </c:if>
-                            <c:if test="${professor!=null}">
 
-                                <li class="nav-header">Sidebar</li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                            </c:if>
+
+                            <li class="nav-header">Menu Do Professor</li>
+                             <li ><a href="#" onclick="abrirPag('lista_pedidos_professor.jsp')">Meus Enviados a mim</a></li>
+                               <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+
                         </ul>
 
 
@@ -146,14 +149,14 @@
         <script src="js/bootstrap-typeahead.js"></script>
         <script src="js/ajax.js"></script>  
         <script src="js/instrucao.js"></script> 
-        <c:if test="${aluno==null}">
-            <script>abrirPag('login.jsp')</script>
+        <c:if test="${param.onload!=null}">
+            <script>abrirPag('${param.onload}')</script>
         </c:if>
-        <c:if test="${aluno!=null}">
-            <c:if test="${param.onload!=null}">
-                <script>abrirPag('${param.onload}')</script>
+            <c:if test="${usuario == null}">
+                <script>abrirPag('login.jsp')</script>
             </c:if>
-        </c:if>
+
+
 
 
 

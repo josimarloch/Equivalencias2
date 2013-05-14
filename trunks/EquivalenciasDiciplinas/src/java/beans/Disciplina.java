@@ -19,8 +19,7 @@ public class Disciplina implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
-//    @ManyToOne
-//    private Professor professor;
+     @Column(columnDefinition="text")
     private String ementa;
     @ManyToOne
     private Curso curso;
