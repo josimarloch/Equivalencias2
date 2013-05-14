@@ -85,6 +85,7 @@
                             <ul class="nav nav-list">
                                 <li class="nav-header">Menu</li>
                                 <li ><a href="#" onclick="abrirPag('lista_cursos.jsp')">Pedir Equivalencia</a></li>
+                                <li ><a href="#" onclick="abrirPag('lista_pedidos.jsp')">Meus Pedidos</a></li>
                                 <li><a href="#">Link</a></li>
                                 <li><a href="#">Link</a></li>
                                 <li><a href="#">Link</a></li>

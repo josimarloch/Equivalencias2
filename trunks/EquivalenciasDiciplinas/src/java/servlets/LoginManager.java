@@ -103,10 +103,11 @@ public class LoginManager extends HttpServlet {
                    // ad.persistir(usuario);
                     //  }               
             }else{
-                    Usuario u = new UserLDAP();
-                    u.setLogin(login);
-                    u.setNome(login);
-                    session.setAttribute("aluno", u);
+                    Usuario usuario = new UserLDAP();
+                    usuario.setLogin(login);
+                    usuario.setNome(login);
+                    session.setAttribute("aluno", usuario);
+                    session.setAttribute("usuario", usuario);
                 
             }
         }

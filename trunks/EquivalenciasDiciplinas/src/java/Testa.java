@@ -1,6 +1,7 @@
 
 import Daos.DisciplinaDao;
 import Daos.ProfessorDao;
+import Daos.RequisicaoEquivalenciaDao;
 import beans.Disciplina;
 import beans.Professor;
 import controler.DisciplinaIterator;
@@ -33,10 +34,11 @@ public class Testa {
 //        
 //        System.out.println(listar);
         //new DisciplinaDao().getPorIDCurso("1");
-        DisciplinaIterator d = new DisciplinaIterator();
-        while(d.hasNext()){
-            System.out.println(d.next().getNome());
-        }
+//        DisciplinaIterator d = new DisciplinaIterator();
+//        while(d.hasNext()){
+//            System.out.println(d.next().getNome());
+//        }
+        System.out.println(new RequisicaoEquivalenciaDao().listaPorLogin("a1028340"));
     }
     
 }
