@@ -100,12 +100,7 @@
                              <li ><a href="#" onclick="abrirPag('lista_pedidos_professor.jsp')">Pedidos Enviados a mim</a></li>
                               
                             </c:if>
-
                         </ul>
-
-
-
-
                     </div><!--/.well -->
                 </div><!--/span-->
                 <div class="span9" id="conteudo"><!--

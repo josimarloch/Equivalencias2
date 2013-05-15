@@ -22,7 +22,7 @@
                 <th>Status Atual</th>
                 <th>#</th>
             </tr>
-            <c:forEach items="${dao.listaPorLogin(usuario.nome)}" var="p" varStatus="status">
+            <c:forEach items="${dao.listaPorLogin(usuario.login)}" var="p" varStatus="status">
                 <tr>
                     <td>
                         <c:out value="${p.diciplinaRequerida.nome}" />               

@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : cria_pedido
     Created on : 08/05/2013, 15:55:17
@@ -8,6 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%session.setAttribute("disciplina", new DisciplinaDao().obterPorId(Integer.parseInt(request.getParameter("disciplina_id"))));%>
+<jsp:useBean id="ddao" class="Daos.DisciplinaDao" scope="request" /> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +20,7 @@
         <ul class="inline">
             <li> Você está aqui: <a href="index.jsp">Inicio</a></li>
             <li><a href="#" onclick="abrirPag('lista_cursos.jsp')">/Escolha o curso</a></li>
-            <li><a href="#" onclick="abrirPag('lista_diciplina.jsp?curso_id=<c:out value="${disciplina.curso.id}" />')">/Escolha a disciplina</a></li>
+            <li><a href="#" onclick="abrirPag('lista_diciplina.jsp?curso_id=<c:out value="${ddao.obterPorId(param.disciplina_id).curso.id}" />')">/Escolha a disciplina</a></li>
             <li>/Escolha a disciplina</li>
         </ul>
         <h3>Pedido de Equivalencia para a Disciplina <c:out value="${disciplina.nome}" /></h3>

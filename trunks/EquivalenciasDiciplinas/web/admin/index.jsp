@@ -104,12 +104,11 @@
                                 <c:if test="${administrador != null}">
                                 <li class="nav-collapse">Menu</li>
                                 <li class="nav-header">Cadastros</li>
-                                <li ><a href="#" onclick="abrirPag('cadastra_professor.jsp')">Cadastro de Professor</a></li>
-                                <li ><a href="#" onclick="abrirPag('cadastra_curso.jsp')">Cadastro de Curso</a></li>
-                                <li id="test2" ><a href="#"  onmousedown="ChangeClass(document.getElementById('test2'),'active');" onclick="abrirPag('cadastra_disciplina.jsp')">Cadastro de Disciplina</a></li>
-                                <li id="test"><a href="#" onclick="ChangeClass(document.getElementById('test'),'active');" onblur="">Link</a></li>
+                                <li id="cp"><a href="#" onclick="abrirPag('cadastra_professor.jsp')" onmousedown="ChangeClass(document.getElementById('cp'),'active');">Cadastro de Professor</a></li>
+                                <li id="cc" ><a href="#" onclick="abrirPag('cadastra_curso.jsp')" onmousedown="ChangeClass(document.getElementById('cc'),'active');">Cadastro de Curso</a></li>
+                                <li id="cd" ><a href="#"  onmousedown="ChangeClass(document.getElementById('cd'),'active');" onclick="abrirPag('cadastra_disciplina.jsp')">Cadastro de Disciplina</a></li>
                                 <li class="nav-header">Consultas</li>
-                                <li ><a href="#" onclick="abrirPag('lista_professor.jsp')">Todos os Professores</a></li>
+                                <li id="tp"><a href="#" onclick="abrirPag('lista_professor.jsp')" onmousedown="ChangeClass(document.getElementById('tp'),'active');">Todos os Professores</a></li>
                                 </c:if>
                             </ul>
                         </div><!--/.well -->

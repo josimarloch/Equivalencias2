@@ -9,10 +9,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%session.setAttribute("disciplinas", new DisciplinaDao().getPorIDCurso(request.getParameter("curso_id")));%>
+<jsp:useBean id="ddao" class="Daos.DisciplinaDao" scope="request" /> 
 
 
-<%session.setAttribute("curso", new CursoDao().obterPorId(Integer.parseInt(request.getParameter("curso_id"))));%>
+<jsp:useBean id="cursodao" class="Daos.CursoDao" scope="request" /> 
+<c:set var="curso" value="${cursodao.obterPorId(param.curso_id)}" property="curso"/>
 
 <!DOCTYPE html>
 <html>
@@ -28,10 +29,8 @@
         </ul>
          <h3>Escolha a Disciplina</h3>
          <ul>
-             <c:forEach items="${disciplinas}" var="d" varStatus="status">
-                 
+             <c:forEach items="${ddao.listaPorIDCurso(param.curso_id)}" var="d" varStatus="status">
                  <li ><a href="#" onclick="abrirPag('cria_pedido.jsp?disciplina_id=<c:out value="${d.id}" />')"><c:out value="${d.nome}" /></a></li>
-                            
             </c:forEach>
         </ul>
     </body>

@@ -37,6 +37,7 @@ public class DaoGenerics<T> implements Dao<T> {
 
         getsession().saveOrUpdate(o);
         getsession().flush();
+        
     }
 
     public void atualizar(T o) {

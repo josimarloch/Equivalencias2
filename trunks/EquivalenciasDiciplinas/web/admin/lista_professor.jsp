@@ -7,7 +7,8 @@
 <%@page import="Daos.ProfessorDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%session.setAttribute("professors", new ProfessorDao().listar());%>
+<%//session.setAttribute("professors", new ProfessorDao().listar());%>
+<jsp:useBean id="professors" class="Daos.ProfessorDao" scope="request" /> 
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +25,7 @@
                 <th>Disciplina(s)</th>
                 <th>#</th>
             </tr>
-            <c:forEach items="${professors}" var="professor" varStatus="status">
+            <c:forEach items="${professors.listar()}" var="professor" varStatus="status">
                 <tr>
                     <td>
                         <c:out value="${professor.nome}" />               
