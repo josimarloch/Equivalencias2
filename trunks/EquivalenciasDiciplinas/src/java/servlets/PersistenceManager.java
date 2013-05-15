@@ -90,24 +90,24 @@ public class PersistenceManager extends HttpServlet {
             if (ok.equals("cadastra_professor")) {
                 String nome = request.getParameter("nome").trim();
                 String email = request.getParameter("email").trim();
-                 ProfessorDao pd = new ProfessorDao();
+                ProfessorDao pd = new ProfessorDao();
                 // if(pd.getPorEmail(email)!=null)
-                         
+
                 if (!nome.equals("") && !email.equals("")) {
                     new ProfessorDao().persistir(new Professor(nome, email));
                     response.sendRedirect("index.jsp?onload=cadastra_professor.jsp?mensagem_ok=Professor cadastrado com sucesso!");
-                }else{
-                    response.sendRedirect("index.jsp?onload=cadastra_professor.jsp?mensagem_erro=Nome ou email Invalido! por favor verifique os campos&professor_nome="+nome+"&professor_email="+email+"");
-                    
+                } else {
+                    response.sendRedirect("index.jsp?onload=cadastra_professor.jsp?mensagem_erro=Nome ou email Invalido! por favor verifique os campos&professor_nome=" + nome + "&professor_email=" + email + "");
+
                 }
             } else if (ok.equals("cadastra_curso")) {
                 String nome = request.getParameter("nome").trim();
                 if (!nome.equals("")) {
                     new CursoDao().persistir(new Curso(nome.toUpperCase()));
                     response.sendRedirect("index.jsp?onload=cadastra_curso.jsp?mensagem_ok=Curso cadastrado com sucesso!");
-                }else{
+                } else {
                     response.sendRedirect("index.jsp?onload=cadastra_curso.jsp?mensagem_erro=Nome invalido para curso");
-                    
+
                 }
 
             } else if (ok.equals("cadastra_disciplina")) {
@@ -120,16 +120,28 @@ public class PersistenceManager extends HttpServlet {
                     d.setNome(nome);
                     d.setCurso(c);
                     d.setEmenta(request.getParameter("ementa").trim());
-                  
+
                     if (!professor.equals("0")) {
                         d.setProfessor(new ProfessorDao().obterPorId(Integer.parseInt(professor)));
                     }
-                   new DisciplinaDao().persistir(d);
+                    new DisciplinaDao().persistir(d);
                     response.sendRedirect("index.jsp?onload=cadastra_disciplina.jsp?mensagem_ok=Disciplina cadastrada com sucesso!");
-                }else{
+                } else {
                     response.sendRedirect("index.jsp?onload=cadastra_disciplina.jsp?mensagem_erro=Erro: nome invalido para disciplina!");
-                    
+
                 }
+            } else if ("vincular_professor".equals(ok)) {
+                String professor = request.getParameter("professor_id").trim();
+                Disciplina d = new DisciplinaDao().obterPorId(Integer.parseInt(request.getParameter("disciplina_id")    ));
+                if (!professor.equals("0")) {
+                    d.setProfessor(new ProfessorDao().obterPorId(Integer.parseInt(professor)));
+                }else{
+                response.sendRedirect("index.jsp?onload=mostra_msg.jsp?mensagem_erro=Professor invalido, por favor escolha o professor corretamente!");
+                return;
+                }
+                new DisciplinaDao().persistir(d);
+                response.sendRedirect("index.jsp?onload=mostra_msg.jsp?mensagem_ok=Professor vinculado a Disciplina com sucesso!");
+
             }
         }
     }

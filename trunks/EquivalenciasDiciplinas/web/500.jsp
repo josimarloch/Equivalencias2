@@ -12,8 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h3 class="alert-danger">Desculpe, mas a página que você estava procurando não pode ser encontrada =(</h3>
-        <img src="google-paginas-404.jpg" alt="Página nãi=o encontrada">
-        <h5><a href="index.jsp">Voltar para início.</a></h5>
+        <h3 class="alert-danger">Desculpe, Ocorreu um erro grave no sistema =[</h3>
     </body>
 </html>

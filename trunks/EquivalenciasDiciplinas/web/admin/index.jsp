@@ -107,6 +107,7 @@
                                 <li id="cp"><a href="#" onclick="abrirPag('cadastra_professor.jsp')" onmousedown="ChangeClass(document.getElementById('cp'),'active');">Cadastro de Professor</a></li>
                                 <li id="cc" ><a href="#" onclick="abrirPag('cadastra_curso.jsp')" onmousedown="ChangeClass(document.getElementById('cc'),'active');">Cadastro de Curso</a></li>
                                 <li id="cd" ><a href="#"  onmousedown="ChangeClass(document.getElementById('cd'),'active');" onclick="abrirPag('cadastra_disciplina.jsp')">Cadastro de Disciplina</a></li>
+                                <li id="vp" ><a href="#"  onmousedown="ChangeClass(document.getElementById('vp'),'active');" onclick="abrirPag('lista_cursos.jsp')">Vincular Professor a uma Disciplina</a></li>
                                 <li class="nav-header">Consultas</li>
                                 <li id="tp"><a href="#" onclick="abrirPag('lista_professor.jsp')" onmousedown="ChangeClass(document.getElementById('tp'),'active');">Todos os Professores</a></li>
                                 </c:if>
