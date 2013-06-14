@@ -7,7 +7,7 @@
 <%@page import="Daos.RequisicaoEquivalenciaDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="dao" class="Daos.RequisicaoEquivalenciaDao"  scope="request" /><%// session.setAttribute("pedidos", new RequisicaoEquivalenciaDao().listaPorLogin(login)); %>
+<jsp:useBean id="dao" class="Daos.RequisicaoEquivalenciaDao"  scope="request" />
 <!DOCTYPE html>
 <html>
     <head>
