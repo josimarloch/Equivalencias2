@@ -27,14 +27,10 @@
                     <td>
                         <c:out value="${p.diciplinaRequerida.nome}" />               
                     </td>
-
                     <td>
                         <c:out value="${p.status}" />               
-                    </td>
-                   
+                    </td>                   
                     <td>
-                      
-                             
                     </td>
                 </tr>
             </c:forEach>
